@@ -1,5 +1,5 @@
 # Staccato
-Audio visualizer using canvas. Made during Bitcamp 2016
+Audio visualizer using canvas. Made during Bitcamp 2016. [Devpost here](http://devpost.com/software/staccato)
 
 You can try it out yourself or go [here](https://codepen.io/abbott/full/jqZPEb/)
 
