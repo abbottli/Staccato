@@ -1,0 +1,124 @@
+<html>
+<body style='overflow: hidden;'>
+  <div style='z-index: -1; position: absolute; top: 0; left: 0'>
+    <canvas id='canvas'></canvas>
+  </div>
+  <input type = 'button' value = 'Start' onclick = 'start();' />
+  <input type = 'button' value = 'Stop' onclick = 'stop();' />
+  <input type = 'button' value = 'Options' onclick = 'options();' />
+  <br><br>
+
+  <div id='loading' style='background-color: white; display: none;'>
+    Loading Audio...
+  </div>
+
+  <div id = 'options' style = 'display: none; width: 200px; height: 500px; float: left; overflow-y: auto; background-color: white'>
+    Enter Url:
+    <input type = 'text' id = 'mp3url' />
+    <br><br>
+
+    Choose File:
+    <input type="file" id="files" />
+    <br><br>
+
+    Preset:
+    <select id = 'preset'>
+      <option>Default</option>
+      <option>Floaty Snow</option>
+      <option>Rain</option>
+      <option>Waveform</option>
+    </select>
+    <br><br>
+
+    Draw Path:
+    <input type = 'checkbox' id = 'grow' />
+    <br><br>
+
+    Bounce:
+    <input type = 'checkbox' id = 'bounce' />
+    <br><br>
+
+    Mic Mode:
+    <input type = 'checkbox' id = 'mic' />
+    <br><br>
+    
+    Sort Shapes:
+    <input type = 'checkbox' id = 'sort' />
+    <br><br>
+
+    Shape Mode:
+    <select id = 'shape'>
+      <option>Pill</option>
+      <option>Words</option>
+    </select>
+    <br><br>
+
+    <div id = 'wordsOptions' style = 'display: none;'>
+      Text to display:<br><br>
+      <textarea id = 'words'></textarea><br><br>
+    </div>
+
+    Direction:
+    <select id = 'direction'>
+      <option>Up</option>
+      <option>Down</option>
+      <option>Random</option>
+    </select>
+    <br><br>
+
+    Number of Shapes:
+    <input type = 'text' id = 'numShapes' size = '1' />
+    <br><br>
+
+    Spread:
+    <input type = 'text' id = 'amp' size = '1' />
+    <br><br>
+
+    Speed:
+    <input type = 'text' id = 'speedMin' size = '1' />
+    -
+    <input type = 'text' id = 'speedMax' size = '1' />   
+    <br><br>
+
+    Spin:
+    <input type = 'text' id = 'spinMin' size = '1' />
+    -
+    <input type = 'text' id = 'spinMax' size = '1' /> 
+    <br><br>
+
+    Size:
+    <input type = 'text' id = 'sizeMin' size = '1' />
+    -
+    <input type = 'text' id = 'sizeMax' size = '1' /> 
+    <br><br>
+
+    Scale:
+    <input type = 'text' id = 'scaleMin' size = '1' />
+    -
+    <input type = 'text' id = 'scaleMax' size = '1' /> 
+    <br><br>
+
+    Opacity:
+    <input type = 'text' id = 'alphaMin' size = '1' />
+    -
+    <input type = 'text' id = 'alphaMax' size = '1' /> 
+    <br><br>
+
+    Dimension:
+    <input type = 'text' id = 'width' size = '1'/>
+    x
+    <input type = 'text' id = 'height' size = '1'/>
+    <br><br>
+
+    Background Color:
+    <input type='color' id='bgColor'/>
+    <br><br>
+
+    Colors:
+    <div id = 'colors'>
+    </div>
+    <input type='button' value='Add' onClick='addColor();'/>
+  </div>
+  <script src = 'burst.js'></script>
+</body>
+</html>
