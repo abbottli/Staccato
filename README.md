@@ -3,7 +3,7 @@ Audio visualizer using canvas. Made during Bitcamp 2016. [Devpost here](http://d
 
 You can try it out yourself or go [here](https://codepen.io/abbott/full/jqZPEb/)
 
-Go into options and choose a song you want to see then click start. The waveform preset looks the coolest.
+Go into options and choose a song you want to see then click start. The waveform preset looks the coolest. The page should preload a song but it may or may not play properly.
 
 ## How it works
 I modified a random particle system generator I made to take audio data as the input instead of randomly generated values. It uses canvas to draw the shapes and AnalyserNode to get the frequency data from the audio signal. This data is used to modified the size and opacity of each shape so they react to the music. The code is a bit messy, but it more or less works.
