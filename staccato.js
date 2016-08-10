@@ -64,13 +64,28 @@ function AudioMic() {
     });
   }
 }
-
+var files;
 // audio from user inputed file
 // click options -> choose file -> start -> wait a little bit for audio to load
 // works bests with songs with lots volume variations or snare beats
 // or pauses or else it might look like a lot of random pulsing pills
 function audioFromFile() {
-  var files = document.getElementById('files').files;
+  document.getElementById('queue').style = 'block';
+  document.getElementById('queue').innerHTML = 'Queue: <br>';
+ 
+  files = document.getElementById('files').files;
+  index = 0;
+
+  for (let i = 0, file; file = files[i]; i++) {
+    document.getElementById('queue').innerHTML +=
+      "<span id='song" + i + "' style='color:black'>" + (i + 1) + '. ' + file.name.match(/(.+)\./)[1] + '</span><br>';
+  }
+  
+  playFromFile();
+}
+
+// if you press start with a queue playing it overlaps, since previous queue is still active
+function playFromFile() {
   var reader = new FileReader();
 
   if (audioCtx == null) {
@@ -84,15 +99,25 @@ function audioFromFile() {
   reader.onload = function (e) {
     audioCtx.decodeAudioData(e.target.result, function (buf) {
       document.getElementById('loading').style.display = 'none';
+      document.getElementById('song' + index).style.color = 'green';
       source = audioCtx.createBufferSource();
       source.connect(analyzer);
       //source.connect(audioCtx.destination); // causes distortion
       analyzer.connect(audioCtx.destination);
       source.buffer = buf;
       source.start(0);
+      source.onended = function() {// plays next song if any in queue
+        document.getElementById('song' + index).style.color = 'black';
+
+        if (index !== files.length - 1) {
+          index++;
+          playFromFile();
+        }
+      };
+
     })
   };
-  reader.readAsArrayBuffer(files[0]);
+  reader.readAsArrayBuffer(files[index]);
   
   dataArray = new Uint8Array(analyzer.frequencyBinCount);
   analyzer.getByteFrequencyData(dataArray); // sets audio data
@@ -378,7 +403,7 @@ function waveform() {
     spinMin: .001,
     spinMax: .005,
     sizeMin: .5,
-    sizeMax: 1.25,
+    sizeMax: 10,
     scaleMin: 5,
     scaleMax: 20,
     alphaMin: .8,
